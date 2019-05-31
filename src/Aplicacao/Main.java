@@ -16,9 +16,18 @@ public class Main {
         Removedor r = new Removedor();
         String s = new String(JOptionPane.showInputDialog("REMOVEDOR DE LINKS\n\nDigite o texto que deseja alterar:"));
         String s2 = s;
-        s = r.removeURL(s);
-        s = r.removeBR(s);
-        s = r.removeBar(s);
+        
+        if(s.contains("http")){
+            s = r.removeURL(s);
+        } 
+        if(s.contains(".br") || s.contains(".br ")){
+            s = r.removeBR(s);
+        }
+        if(s.contains("/") || s.contains("/ ")){
+          s = r.removeBar(s);  
+        }
+        
+        
         JOptionPane.showMessageDialog(null, "Texto Digitado:\n"+s2+"\n\nTexto sem Links!!\n"+s);
         System.out.println("Texto Digitado:\n"+s2+"\n\nTexto sem Links!!\n"+s);
     }
